@@ -41,7 +41,7 @@ def which_exec(file):
  os.environ["PATH"] = os.environ["PATH"] + os.pathsep + os.path.dirname(os.path.realpath(__file__)) + os.pathsep + os.getcwd();
  for path in os.environ["PATH"].split(":"):
   if os.path.exists(path + "/" + file):
-   return path + "/" + file
+   return path + "/" + file;
 
 def listize(varlist):
  il = 0;
