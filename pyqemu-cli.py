@@ -45,8 +45,8 @@ if(len(sys.argv)>1):
  if(not os.path.exists(cmdargpath)):
   cmdargpath = os.path.realpath(os.getcwd());
 
+os.environ["PATH"] = os.environ["PATH"] + os.pathsep + os.path.dirname(os.path.realpath(__file__)) + os.pathsep + os.getcwd();
 def which_exec(execfile):
- os.environ["PATH"] = os.environ["PATH"] + os.pathsep + os.path.dirname(os.path.realpath(__file__)) + os.pathsep + os.getcwd();
  for path in os.environ["PATH"].split(":"):
   if os.path.exists(path + "/" + execfile):
    return path + "/" + execfile;
@@ -148,6 +148,7 @@ print(qemu32larglist);
 qemu32cmdlaunch = subprocess.Popen(qemu32larglist, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
 qemu32cmdlaunch.wait();
 print(str(qemu32cmdlaunch.returncode));
+print("");
 
 
 qemu64llocatout = which_exec(qemu64execname);
@@ -180,7 +181,7 @@ qemu64lsoundhwout, qemu64lsoundhwerr = qemu64soundhwlistp.communicate();
 qemu64lsoundhwlist = re.findall("^([\w]+)\s\s+([\w\(\) ]+)\n", qemu64lsoundhwout, flags=re.MULTILINE);
 qemu64lsoundhwlist.append(('all', 'Enable all sound cards'));
 qemu64lsoundhwnlist = twolistize(qemu64lsoundhwlist);
-qemu64larglist = arglistize(qemu64llocatout, ('-hda', '/dev/null'), ('-cdrom', '/home/cooldude2k/Emu/Minix3/minix_R3.3.0-588a35b.iso'), ('-boot', 'order=acd,once=d,menu=on'), ('-cpu', qemu64lcpunlist['name']['reg'][9]), ('-machine', qemu64lmachinenlist['name']['reg'][16]), ('-soundhw', qemu64lsoundhwnlist['name']['reg'][8]), ('-sdl', None));
+qemu64larglist = arglistize(qemu64llocatout, ('-hda', '/dev/null'), ('-cdrom', '/home/cooldude2k/Emu/Minix3/minix_R3.3.0-588a35b.iso'), ('-boot', 'order=acd,once=d,menu=on'), ('-cpu', qemu64lcpunlist['name']['reg'][9]), ('-machine', qemu64lmachinenlist['name']['reg'][17]), ('-soundhw', qemu64lsoundhwnlist['name']['reg'][8]), ('-sdl', None));
 print("PATH environment variable is set to "+os.environ["PATH"]);
 print("Python "+sys.version);
 print(__project__+" version "+__version__);
