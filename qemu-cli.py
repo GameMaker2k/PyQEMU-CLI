@@ -1,1 +1,1 @@
-./pyqemu-cli.py
+. / pyqemu - cli.py
