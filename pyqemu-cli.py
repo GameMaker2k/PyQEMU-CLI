@@ -15,7 +15,7 @@
     $FileInfo: qemu-cli.py - Last Update: 4/07/2015 Ver. 0.0.1 RC 1 - Author: cooldude2k $
 '''
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals, generators, with_statement, nested_scopes
 import os
 import sys
 import re
